@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: openvpn
-        image: openvpn-as:latest
+        image: openvpn/openvpn-as
         ports:
         - containerPort: 443
           protocol: TCP
@@ -38,7 +38,6 @@ metadata:
   name: vpn-service
   namespace: vpn
 spec:
-  type: LoadBalancer
   ports:
   - name: https
     port: 443
@@ -53,5 +52,5 @@ spec:
     targetPort: 1194
     protocol: UDP
   selector:
-    app: vpn
+    app: openvpn
 
